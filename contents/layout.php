@@ -1,3 +1,7 @@
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
 <!DOCTYPE html>
 
 <html>
@@ -11,8 +15,8 @@
                 <nav>
                     <?= $this->insert("contents/nav.php") ?>
                 </nav>
-                <main <?= $this->attributes($mainAttributes) ?> >
-                    <?= $this->insert("contents/main.php", $context) ?>
+                <main <?= Html::attributes($mainAttributes) ?> >
+                    <?= $this->insert($mainTemplate, $context) ?>
                 </main>
                 <footer>
                     <?= $this->insert("contents/footer.php") ?>

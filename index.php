@@ -22,12 +22,10 @@ ini_set ('session.use_cookies',1);  //všude default v php.ini
 $environment = (new EnvironmentFactory())->createFromGlobals();
 $app = (new AppFactory())->createFromEnvironment($environment);
 
-//if (PES_PRODUCTION OR !PES_DEVELOPMENT) {
+if (PES_PRODUCTION OR !PES_DEVELOPMENT) {
     $response = $app->run(new Application(), new UnprocessedRequestHandler());
-//} else {
-//    $response = $app->run((new ApplicationDevelopment()), new UnprocessedRequestHandler());
-//}
-echo 'lekfjaklůjfgkajlů';
-    
-echo $response->getBody()->getSize;
-//(new ResponseSender())->send($response);
+} else {
+    $response = $app->run((new ApplicationDevelopment()), new UnprocessedRequestHandler());
+}
+
+(new ResponseSender())->send($response);

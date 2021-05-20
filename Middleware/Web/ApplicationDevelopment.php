@@ -7,17 +7,22 @@ use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
 use Pes\Http\Response;
-
-use Pes\Container\ContainerFactory;
-use Model\ContextContainerConfigurator;
-
-use Helper\TestHelper;
-
-use Pes\Logger\FileLogger;
-
+use Pes\Http\Request\RequestParams;
 use Pes\View\View;
 use Pes\View\Template\PhpTemplate;
-use Pes\View\Renderer\RendererContainer;
+use Pes\View\Renderer\PhpTemplateRenderer;
+use Pes\Container\Container;
+use Pes\Logger\FileLogger;
+
+use Container\ContextContainerConfigurator;
+
+use Model\UvodniStranka;
+use Model\Pribehy;
+use Model\Kraje;
+use Model\NabidkaPrace;
+use Model\Kontakt;
+
+use Pes\View\Renderer\Container\TemplateRendererContainer;
 
 use Pes\View\Recorder\RecorderProvider;
 use Pes\View\Recorder\VariablesUsageRecorder;
@@ -32,14 +37,9 @@ class ApplicationDevelopment implements MiddlewareInterface {
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler=NULL): ResponseInterface {
 
-        if ($handler) {
-                $logger = FileLogger::getInstance('Logs', 'WebApplicationLogger.log', FileLogger::APPEND_TO_LOG);
-                $logger->error(get_class().' - zadán RequestHandler, druhý parametr metody process(). Metoda není připravena na zpracování vnořeného middleware.');
-        }
-        #### speed test ####
-        $helper = new TestHelper();
-        $helper->interval(TRUE); //reset
+        $logger = FileLogger::getInstance('Logs', 'ApplicationLogger.log', FileLogger::APPEND_TO_LOG);
 
+        $modelContainer = (new ContextContainerConfigurator())->configure(new Container());
         #### template, renderer se záznamem, view a renderování výstupu ####
         // Příprava na logování
         //
@@ -52,31 +52,74 @@ class ApplicationDevelopment implements MiddlewareInterface {
         // Po skončení renderování se RecorderProvider předá do RecordsLoggeru pro logování užití proměnných v šablonách. V RecordsLoggeru
         // jsou všechny RecorderProviderem poskytnuté a zaregistrované Rekordery přečteny a je pořízen log.
         $recorderProvider = new RecorderProvider(VariablesUsageRecorder::RECORD_LEVEL_FULL);
-        RendererContainer::setRecorderProvider($recorderProvider);
+        $rendererContainer = new TemplateRendererContainer();
+        $rendererContainer->setRecorderProvider($recorderProvider);
 
-        $contextContainer = (new ContainerFactory())->create(ContextContainerConfigurator::getDefinitionArray('Web', $request));
-        $template = (new PhpTemplate('contents/layout.php'));
-        $view = (new View())->setTemplate($template)->setData($contextContainer->get('contents/layout.php'));
+        $requestParams = new RequestParams();
+        $mainTemplate = $requestParams->getParam($request, 'main', 'uvod');  // default uvod;
+        $pribeh = $requestParams->getParam($request, 'pribeh', '');  // druhý parametr je default hodnota
+        $kraj = $requestParams->getParam($request, 'kraj', '');
 
-        $renderingDuration = $helper->interval();
+        switch ($mainTemplate) {
+        case 'ohlasy_ctenaru':
+            ;
+            $data = [$templateName = "contents/main/ohlasy_ctenaru.php"] + $modelContainer->get(OhlasyCtenaru::class)->getOdpovedi();
+        break;
+        case 'kontakt':
+            ;
+            $data = [$templateName ="contents/main/kontakt.php"] + $modelContainer->get(Kontakt::class)->getKontakt();
+        break;
+        case 'prac_mista':
+            ;
+            $data = [
+                $templateName = "contents/main/prac_mista.php",
+                 $modelContainer->get(Kraje::class)->getVyberKraje($kraj),
+                'nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)
+            ];
+        break;
+        case 'pribehy':
+            ;
+            $data = [$templateName = "contents/main/pribehy.php"] + $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh);
+        break;
+        case 'pribeh':
+            ;
+            $data = [
+                $templateName = "contents/main/pribeh.php",
+                $modelContainer->get(Pribehy::class)->getPribehStudenta($pribeh),
+                'perexyOstatni'=> $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh)
+            ];
+        break;
+        case 'skoly_firmy':
+            ;
+            $data = [$templateName = "contents/main/skoly_firmy.php"] + $modelContainer->get( $skolyFirmy);
+        break;
+        case 'uvod':
+        default:
+            ;
+            $data = [
+                $templateName = "contents/main/uvod.php",
+                    'uvodniSlovo' => $modelContainer->get(UvodniStranka::class)->getUvodniSlovo(),
+                    'anotace' => $modelContainer->get(UvodniStranka::class)->getAnotace(),
+                    'tematickeOkruhy' => $modelContainer->get(UvodniStranka::class)->getTematickeOkruhy(),
+                    'ukazka' => $modelContainer->get(UvodniStranka::class)->getUkazka(),
+                    'ohlasyCtenaruUvod' => $modelContainer->get(UvodniStranka::class)->getOhlasy(),
+                    'kontakt' => $modelContainer->get(Kontakt::class)->getKontakt(),
+                    ];
+        }
+
         //logování
         // Je třeba nastavit libovolný běžný logger jako parametr RecordsLoggeru.
         // Zde je jako běžný logger použit FileLogger a log tedy bude zapsán v příslušném souboru.
         // RecordsLogger získá data z recorderů a zapíše log.
         $logger = FileLogger::getInstance('Logs', 'ViewLogger.log', FileLogger::REWRITE_LOG);
         (new RecordsLogger($logger))->logRecords($recorderProvider);
-        $loggingDuration = $helper->interval();
 
+        $template = (new PhpTemplate('contents/layout.php'));
 
-        #### speed test výsledky jsou viditelné ve firebugu ####
-        $testHtml[] =  '<div style="display: none;">';
-        $testHtml[] = '<p>Template, renderer, view a renderování výstupu: '.$renderingDuration.'</p>';
-        $testHtml[] = '<p>Zápis recordu do logu: '.$loggingDuration.'</p>';
-        $testHtml[] = '<p>Odeslání html: '.$helper->interval().'</p>';
-        $testHtml[] = '</div>';
+        $view = (new View())->setRenderer(new PhpTemplateRenderer())->setTemplate($template)->setData($data);
 
         $response = new Response(200);
-        $size = $response->getBody()->write($view->render(). implode(PHP_EOL, $testHtml));
+        $size = $response->getBody()->write($view->getString());
         return $response;
     }
 

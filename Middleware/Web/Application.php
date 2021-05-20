@@ -23,7 +23,7 @@ use Pes\View\Template\PhpTemplate;
 
 class Application implements MiddlewareInterface {
     /**
-     *
+     * 
      * @param ServerRequestInterface $request
      * @param RequestHandlerInterface $handler
      * @return Response

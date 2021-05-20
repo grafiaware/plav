@@ -1,5 +1,9 @@
-                    <h2><?= $this->filter('mono',$nadpisSekce)?></h2>
-                    <div class="ui centered grid">   
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+                    <h2><?= Text::filter('mono',$nadpisSekce)?></h2>
+                    <div class="ui centered grid">
                         <div class="sixteen wide mobile ten wide tablet fifteen wide computer column">
                             <?=$this->insert('contents/main/prac_mista/vyberKraje.php', $context)?>
                         </div>

@@ -1,2 +1,6 @@
-                                    <b><?= $this->filter('mono',$ctenar)?></b> 
-                                    <?= $this->filter('mono|p', $ohlas) ?>
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+                                    <b><?= Text::filter('mono',$ctenar)?></b>
+                                    <?= Text::filter('mono|p', $ohlas) ?>

@@ -1,5 +1,9 @@
-                                    <a <?=$this->attributes($odkazAttributes)?>>
-                                        <img <?=$this->attributes($imgAttributes)?>/>
-                                        <?= $this->filter('mono|p',$popisek)?>
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+                                    <a <?= Html::attributes($odkazAttributes)?>>
+                                        <img <?= Html::attributes($imgAttributes)?>/>
+                                        <?= Text::filter('mono|p',$popisek)?>
                                     </a>
 

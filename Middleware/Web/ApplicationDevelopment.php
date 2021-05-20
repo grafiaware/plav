@@ -17,6 +17,8 @@ use Pes\Logger\FileLogger;
 use Container\ContextContainerConfigurator;
 
 use Model\UvodniStranka;
+use Model\SkolyFirmy;
+use Model\OhlasyCtenaru;
 use Model\Pribehy;
 use Model\Kraje;
 use Model\NabidkaPrace;
@@ -62,51 +64,48 @@ class ApplicationDevelopment implements MiddlewareInterface {
 
         switch ($mainTemplate) {
         case 'ohlasy_ctenaru':
-            ;
-            $data = [$templateName = "contents/main/ohlasy_ctenaru.php"] + $modelContainer->get(OhlasyCtenaru::class)->getOdpovedi();
+            $data = ['templateName' => "contents/main/ohlasy_ctenaru.php"] + $modelContainer->get(OhlasyCtenaru::class)->getOdpovedi();
         break;
         case 'kontakt':
-            ;
-            $data = [$templateName ="contents/main/kontakt.php"] + $modelContainer->get(Kontakt::class)->getKontakt();
+            $data = ['templateName' => "contents/main/kontakt.php"] + $modelContainer->get(Kontakt::class)->getKontakt();
         break;
         case 'prac_mista':
-            ;
             $data = [
-                $templateName = "contents/main/prac_mista.php",
+                'templateName' => "contents/main/prac_mista.php",
                  $modelContainer->get(Kraje::class)->getVyberKraje($kraj),
                 'nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)
             ];
         break;
         case 'pribehy':
             ;
-            $data = [$templateName = "contents/main/pribehy.php"] + $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh);
+            $data = ['templateName' => "contents/main/pribehy.php"] + $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh);
         break;
         case 'pribeh':
-            ;
             $data = [
-                $templateName = "contents/main/pribeh.php",
+                'templateName' => "contents/main/pribeh.php",
                 $modelContainer->get(Pribehy::class)->getPribehStudenta($pribeh),
                 'perexyOstatni'=> $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh)
             ];
         break;
         case 'skoly_firmy':
-            ;
-            $data = [$templateName = "contents/main/skoly_firmy.php"] + $modelContainer->get( $skolyFirmy);
+            $data = [
+                'templateName' => "contents/main/skoly_firmy.php",
+                'skolyFirmy' => $modelContainer->get(SkolyFirmy::class)->getDataSkolyFirmy()];
         break;
         case 'uvod':
         default:
-            ;
             $data = [
-                $templateName = "contents/main/uvod.php",
-                    'uvodniSlovo' => $modelContainer->get(UvodniStranka::class)->getUvodniSlovo(),
-                    'anotace' => $modelContainer->get(UvodniStranka::class)->getAnotace(),
-                    'tematickeOkruhy' => $modelContainer->get(UvodniStranka::class)->getTematickeOkruhy(),
-                    'ukazka' => $modelContainer->get(UvodniStranka::class)->getUkazka(),
-                    'ohlasyCtenaruUvod' => $modelContainer->get(UvodniStranka::class)->getOhlasy(),
-                    'kontakt' => $modelContainer->get(Kontakt::class)->getKontakt(),
-                    ];
+                'templateName' => "contents/main/uvod.php",
+                'uvodniSlovo' => $modelContainer->get(UvodniStranka::class)->getUvodniSlovo(),
+                'anotace' => $modelContainer->get(UvodniStranka::class)->getAnotace(),
+                'tematickeOkruhy' => $modelContainer->get(UvodniStranka::class)->getTematickeOkruhy(),
+                'ukazka' => $modelContainer->get(UvodniStranka::class)->getUkazka(),
+                'ohlasyCtenaruUvod' => $modelContainer->get(UvodniStranka::class)->getOhlasy(),
+                'kontakt' => $modelContainer->get(Kontakt::class)->getKontakt(),
+                ];
         }
 
+        $layoutData = ['mainAttributes' => ['class'=>$mainTemplate]];
         //logování
         // Je třeba nastavit libovolný běžný logger jako parametr RecordsLoggeru.
         // Zde je jako běžný logger použit FileLogger a log tedy bude zapsán v příslušném souboru.
@@ -116,7 +115,7 @@ class ApplicationDevelopment implements MiddlewareInterface {
 
         $template = (new PhpTemplate('contents/layout.php'));
 
-        $view = (new View())->setRenderer(new PhpTemplateRenderer())->setTemplate($template)->setData($data);
+        $view = (new View())->setRenderer(new PhpTemplateRenderer())->setTemplate($template)->setData($layoutData + $data);
 
         $response = new Response(200);
         $size = $response->getBody()->write($view->getString());

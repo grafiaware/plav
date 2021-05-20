@@ -14,8 +14,10 @@ use Pes\Http\RequestInterface;
 use Model\UvodniStranka;
 use Model\SkolyFirmy;
 use Model\OhlasyCtenaru;
+use Model\Pribehy;
 use Model\Kontakt;
-
+use Model\Kraje;
+use Model\NabidkaPrace;
 /**
  * Description of ContextDefinition
  *
@@ -43,6 +45,15 @@ class ContextContainerConfigurator extends ContainerConfiguratorAbstract {
         OhlasyCtenaru::class => function($c) {return
             new OhlasyCtenaru();
         },
+        Pribehy::class => function($c) {return
+            new Pribehy();
+        },
+        Kraje::class => function($c) {return
+            new Kraje();
+        },
+        NabidkaPrace::class => function($c) {return
+            new NabidkaPrace();
+        }
 
         ];
     }

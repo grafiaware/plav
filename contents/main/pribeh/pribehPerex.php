@@ -1,2 +1,6 @@
-                                <h2><?= $this->filter('e|mono', $pribehyPerexTitleText) ?></h2>
-                                <?= $this->filter('mono|p', $pribehyPerexText) ?> 
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+                                <h2><?= Text::filter('e|mono', $pribehyPerexTitleText) ?></h2>
+                                <?= Text::filter('mono|p', $pribehyPerexText) ?>

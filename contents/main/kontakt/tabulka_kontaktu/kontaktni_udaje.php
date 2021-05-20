@@ -1,7 +1,11 @@
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
                                             <tr>
-                                                <th><?= $this->filter('mono',$nazevOddeleni)?></th>
-                                                <td><?= $this->filter('mono',$kontakt)?></td>
+                                                <th><?= Text::filter('mono',$nazevOddeleni)?></th>
+                                                <td><?= Text::filter('mono',$kontakt)?></td>
                                             </tr>
                                             <tr>
-                                                <td <?= $this->attributes($popisTdAttributes)?>><?= $this->filter('mono',$popis)?></td>
+                                                <td <?= Html::attributes($popisTdAttributes)?>><?= Text::filter('mono',$popis)?></td>
                                             </tr>

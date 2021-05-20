@@ -1,2 +1,6 @@
-                                    <img <?=$this->attributes($imgAttributes)?>/>
-                                    <p <?=$this->attributes($pAttributes)?>><?= $this->filter('mono',$popisek)?></p>
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+            <img <?= Html::attributes($imgAttributes)?>/>
+            <p <?= Html::attributes($pAttributes)?>><?= Text::filter('mono',$popisek)?></p>

@@ -1,6 +1,10 @@
-                                <h2><?= $this->filter('mono',$nadpis)?></h2>
-                                <a <?= $this->attributes($odkazAttributes)?>>
-                                    <img <?= $this->attributes($imgAttributes)?>>
-                                    <?= $this->filter('e|mono|p',$odkazText) ?>
+<?php
+use Pes\Text\Text;
+use Pes\Text\Html;
+?>
+                                <h2><?= Text::filter('mono',$nadpis)?></h2>
+                                <a <?= Html::attributes($odkazAttributes)?>>
+                                    <img <?= Html::attributes($imgAttributes)?>>
+                                    <?= Text::filter('e|mono|p',$odkazText) ?>
                                 </a>
 

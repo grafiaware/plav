@@ -16,7 +16,7 @@ use Pes\Text\Html;
                     <?= $this->insert("contents/nav.php") ?>
                 </nav>
                 <main <?= Html::attributes($mainAttributes) ?> >
-                    <?= $this->insert($mainTemplate, $context) ?>
+                    <?= $this->insert($templateName, $context) ?>
                 </main>
                 <footer>
                     <?= $this->insert("contents/footer.php") ?>

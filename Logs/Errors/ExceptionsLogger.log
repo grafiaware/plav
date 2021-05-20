@@ -1,0 +1,4 @@
+[debug] [2021-05-20 12:41:07] Logger start. Log file: C:/xampp/htdocs/Plav/Logs/Errors/ExceptionsLogger.log. Mode 'a+'.
+[critical] ParseError [2021-05-20 12:41:07] syntax error, unexpected 'Trubko' (T_STRING) on line 129 in file C:\xampp\htdocs\Plav\vendor\Pes\pes\src\Application\App.php
+[debug] [2021-05-20 12:42:19] Logger start. Log file: C:/xampp/htdocs/Plav/Logs/Errors/ExceptionsLogger.log. Mode 'a+'.
+[critical] ParseError [2021-05-20 12:42:19] syntax error, unexpected 'stejně' (T_STRING) on line 32 in file C:\xampp\htdocs\Plav\Middleware\Web\Application.php

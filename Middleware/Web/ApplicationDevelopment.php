@@ -72,8 +72,9 @@ class ApplicationDevelopment implements MiddlewareInterface {
         case 'prac_mista':
             $data = [
                 'templateName' => "contents/main/prac_mista.php",
-                 $modelContainer->get(Kraje::class)->getVyberKraje($kraj),
-                'nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)
+                ] +
+                 $modelContainer->get(Kraje::class)->getVyberKraje($kraj) +
+                ['nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)
             ];
         break;
         case 'pribehy':

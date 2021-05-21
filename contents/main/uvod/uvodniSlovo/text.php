@@ -2,5 +2,5 @@
 use Pes\Text\Text;
 use Pes\Text\Html;
 ?>
-                                     <?= Text::filter('mono|p', $odstavec)?>
+                                     <?= Html::p(Text::filter('mono', $odstavec))?>
 

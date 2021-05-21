@@ -70,28 +70,25 @@ class ApplicationDevelopment implements MiddlewareInterface {
             $data = ['templateName' => "contents/main/kontakt.php"] + $modelContainer->get(Kontakt::class)->getKontakt();
         break;
         case 'prac_mista':
-            $data = [
-                'templateName' => "contents/main/prac_mista.php",
-                ] +
+            $data =
+                ['templateName' => "contents/main/prac_mista.php",] +
                  $modelContainer->get(Kraje::class)->getVyberKraje($kraj) +
-                ['nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)
-            ];
+                ['nabidkaPraceVKraji' => $modelContainer->get(NabidkaPrace::class)->findPodleIdKraje($kraj)];
         break;
         case 'pribehy':
             ;
             $data = ['templateName' => "contents/main/pribehy.php"] + $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh);
         break;
         case 'pribeh':
-            $data = [
-                'templateName' => "contents/main/pribeh.php",
-                $modelContainer->get(Pribehy::class)->getPribehStudenta($pribeh),
-                'perexyOstatni'=> $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh)
-            ];
+            $data =
+                [ 'templateName' => "contents/main/pribeh.php",] +
+                $modelContainer->get(Pribehy::class)->getPribehStudenta($pribeh) +
+                ['perexyOstatni'=> $modelContainer->get(Pribehy::class)->findPribehyPerexyOstatni($pribeh)];
         break;
         case 'skoly_firmy':
             $data = [
-                'templateName' => "contents/main/skoly_firmy.php",
-                'skolyFirmy' => $modelContainer->get(SkolyFirmy::class)->getDataSkolyFirmy()];
+                'templateName' => "contents/main/skoly_firmy.php"] +
+                $modelContainer->get(SkolyFirmy::class)->getDataSkolyFirmy();
         break;
         case 'uvod':
         default:

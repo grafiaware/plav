@@ -8,6 +8,6 @@ use Pes\Text\Html;
                     <div class="ui centered grid">
                         <div class="fifteen wide mobile twelve wide tablet ten wide computer column center aligned">
                             <i class="comments outline circular icon"></i>
-                            <?= Text::filter('e|mono|p', $kontakt) ?>
+                            <?= Html::p(Text::filter('e|mono', $kontakt)) ?>
                         </div>
                     </div>

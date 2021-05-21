@@ -9,7 +9,7 @@ use Pes\Text\Html;
                                                 <div class="progress"></div>
                                             </div>
                                         </div>
-                                        <?= Text::filter('e|mono|p',$progressOdpovediNazev) ?>
+                                        <?= Html::p(Text::filter('e|mono',$progressOdpovediNazev)) ?>
                                     </div>
 
                                 <script> $('.progress').progress(); </script>

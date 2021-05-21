@@ -25,14 +25,14 @@ use Pes\Text\Html;
                                         <p class="mg-b40"></p>
                                     </div>
                                 </div>
-                                    <?= Text::filter('e|mono', '
+                                    <?= Html::p(Text::filter('e|mono', '
                                         Školu jsem dokončil s vyznamenáním a měl jsem přejít do Křimic na nástavbu na mechanizátora, ale to je práce s lidmi a to jsem nechtěl, vyzkoušel jsem si to na vojně. Šel jsem proto jako těžař s pilou do lesa nejdřív jako zaměstnanec Státních lesů. Po revoluci jsem se stal živnostníkem pro práci v lese. Znamená to, že si mne firmy najímají na konkrétní lesnické práce - kácení stromů, svážení dřeva, stavba lesních školek, prořezávání cest, sázení stromků... Baví mne práce v úkolu. Nechci se honit za kariérou.
-                                    ') ?>
+                                    ')) ?>
                                 <div class="ui left floated small image"><img  src="public/images/lubomir-pressl1.jpg" alt="obrazek"></div>
-                                    <?= Text::filter('e|mono|p', '
+                                    <?= Html::p(Text::filter('e|mono', '
                                         Líbí se mi na tom ta SVOBODA. Dělám podle své potřeby, nemám pevnou pracovní dobu, jsem na čerstvém vzduchu a mám klid od lidí, nemusím se s nikým dohadovat. Zadají mi práci a já ji udělám. Jsem odpovědný sám za sebe. Je zajímavé, že i když pracuji v zimě i v plískanicích, nemarodím. Ale kdykoli přijdu mezi lidi, něco chytnu. Dělám to 29 let a neměnil bych. Mám stále skvělou kondici a čistou hlavu.
                                         Žiju na vesnici v Pošumaví, mám tak čas i na svého velkého koníčka - koně a rekreační ježdění. Hodně čtu, hlavně historické romány a publikace o Šumavě. Pořád je co objevovat.
-                                    ') ?>
+                                    ')) ?>
                                 <p class="mg-b50">Pro absolventy mám jediné doporučení - nebojte se fyzické práce, je jí stále dost a není za co se stydět!</p>
                             </div>
                             <div class="ui horizontal divider">Přečtěte si také</div>

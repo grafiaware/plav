@@ -11,11 +11,11 @@ use Pes\Text\Html;
                             </div>
                             <article>
                                 <h2><?= Text::filter('e|mono', $pribehPerex['pribehyPerexTitleText']) ?></h2>
-                                <?= Text::filter('e|mono|p', $pribehPerex['pribehyPerexText']) ?>
+                                <?= Html::p(Text::filter('e|mono', $pribehPerex['pribehyPerexText'])) ?>
                                 <img <?= Html::attributes($pribehyStudentu['DavidBrabec']['imgPribehuAttributes']) ?> />
-                                <?= Text::filter('e|mono|p', $pribehyStudentu['DavidBrabec']['castPribehu']) ?>
+                                <?= Html::p(Text::filter('e|mono', $pribehyStudentu['DavidBrabec']['castPribehu'])) ?>
                                 <img <?= htmlattributes($pribehyStudentu['DavidBrabec']['imgAutoraAttributes'])?> />
-                                <?= Text::filter('e|mono|p', $pribehyStudentu['DavidBrabec']['cast2Pribehu']) ?>
+                                <?= Html::p(Text::filter('e|mono', $pribehyStudentu['DavidBrabec']['cast2Pribehu'])) ?>
                             </article>
                             <div class="ui horizontal divider"><?= $pribehyStudentu['divider'] ?></div>
                             <?= $this->repeat('contents/main/pribehy/perex.php', $context['perexy']) ?>

@@ -6,7 +6,7 @@ use Pes\Text\Html;
                                 <div class="ui segment">
                                     <div class="ui two equal width column grid">
                                         <div class="sixteen wide mobile seven wide tablet five wide computer column middle aligned center aligned">
-                                            <img class="ui image" <?= $this->attributes($pribehPerex['pribehyPerexImageAttributes']) ?> />
+                                            <img class="ui image" <?= Html::attributes($pribehPerex['pribehyPerexImageAttributes']) ?> />
                                         </div>
                                         <div class="column">
                                             <h3>

@@ -14,32 +14,32 @@ class NabidkaPrace {
             "nazevKraje" => "Plzeňský kraj",
             "nabidka" => [
                 "zamestnavatele" => [
-                    "DZ" => [
-                        "nazev" => "DZ Klatovy", "www" => "www.dzklatovy.cz/cesky/"
+                    "Rodenstock" => [
+                        "nazev" => "Rodenstock ČR, s.r.o.", "www" => "www.rodenstock.cz/cz/cz/index.html"
                     ],
-                    "Klaus" => [
-                        "nazev" => "Klaus Timber a.s.", "www" => "www.klaustimber.cz"
+                    "Ponnath" => [
+                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.de/cz/"
                     ],
-                    "Bohemia" => [
-                        "nazev" => "Bohemia ShelfCo 2018 s.r.o.", "www" => "rejstrik-firem.kurzy.cz/07693745/bohemia-shelfco-2018-sro"
-                    ],
-                    "DIOS" => [
-                        "nazev" => "DIOSS NÝŘANY a.s.", "www" => "dioss.cz/"
-                    ],
-                    "Policie" => [
-                        "nazev" => "Policejní prezidium ČR", "www" => "nabor.policie.cz/"
-                    ],
-                    "Possehl" => [
-                        "nazev" => "Possehl Electronics Czech Republic s.r.o.", "www" => "www.possehlelectronics.de/en/sites/dysina-cz-2.html"
-                    ],
-                    "Invelt" => [
-                        "nazev" => "Invelt – elektro s.r.o.", "www" => "www.invelt.cz/"
+                    "Wacker" => [
+                        "nazev" => "Wacker-chemie, s.r.o.", "www" => "www.wacker.com/cms/en-cz/careers/working-at-wacker/pilsen-careers.html"
                     ],
                     "LOXXES" => [
                         "nazev" => "LOXXESS Bor s.r.o.", "www" => "www.loxxess.com/cz"
                     ],
-                    "FST" => [
-                        "nazev" => "ZČU – FST", "www" => "www.fst.zcu.cz/cs/"
+                    "SD-sped" => [
+                        "nazev" => "SD sped a.s.", "www" => "www.sdsped.cz/"
+                    ],
+                    "Adient" => [
+                        "nazev" => "Adient Bor s.r.o.", "www" => "www.adient.com/czech-republic/bor"
+                    ],
+                    "Rotarex" => [
+                        "nazev" => "Rotarex Praha spol.,s.r.o.", "www" => "www.rotarex-praha.cz/"
+                    ],
+                    "IAC" => [
+                        "nazev" => "IAC Group, s.r.o.", "www" => "www.iacgroup.com/about-iac/locations/europe-locations/"
+                    ],
+                    "Doosan" => [
+                        "nazev" => "Doosan Škoda Power, s.r.o.", "www" => "www.doosanskodapower.com/cz/"
                     ],
                 ]
             ]
@@ -61,6 +61,9 @@ class NabidkaPrace {
             "nazevKraje" => "Jihočeský kraj",
             "nabidka" => [        
                 "zamestnavatele" => [
+                    "Ponnath" => [
+                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.de/cz/"
+                    ],
                     "Wienerberger" => [
                         "nazev" => "Wienerberger s.r.o.", "www" => "www.wienerberger.cz/o-nas-a-kontakty/kariera.html"
                     ],
@@ -106,7 +109,13 @@ class NabidkaPrace {
         ],
         "karlovarsky" => [
             "nazevKraje" => "Karlovarský  kraj",
-            "nabidka" => []
+            "nabidka" => [
+                "zamestnavatele" => [
+                    "Wacker" => [
+                        "nazev" => "Wacker-chemie, s.r.o.", "www" => "www.wacker.com/cms/en-cz/careers/working-at-wacker/pilsen-careers.html"
+                    ],
+                ]
+            ]
         ],
         "kralovehradecky" => [
             "nazevKraje" => "Královéhradecký kraj",

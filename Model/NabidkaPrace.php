@@ -18,7 +18,7 @@ class NabidkaPrace {
                         "nazev" => "Rodenstock ČR, s.r.o.", "www" => "www.rodenstock.cz/cz/cz/index.html"
                     ],
                     "Ponnath" => [
-                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.cz/budoucnost"
+                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.de/cz/kariera/"
                     ],
                     "Wacker" => [
                         "nazev" => "Wacker-chemie, s.r.o.", "www" => "www.wacker.com/cms/en-cz/careers/working-at-wacker/pilsen-careers.html"
@@ -62,7 +62,7 @@ class NabidkaPrace {
             "nabidka" => [        
                 "zamestnavatele" => [
                     "Ponnath" => [
-                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.cz/budoucnost"
+                        "nazev" => "Ponnath řezničští mistři, s.r.o.", "www" => "www.ponnath.de/cz/kariera/"
                     ],
                     "Wienerberger" => [
                         "nazev" => "Wienerberger s.r.o.", "www" => "www.wienerberger.cz/o-nas-a-kontakty/kariera.html"

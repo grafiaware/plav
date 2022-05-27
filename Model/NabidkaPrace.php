@@ -41,6 +41,15 @@ class NabidkaPrace {
                     "Doosan" => [
                         "nazev" => "Doosan Škoda Power, s.r.o.", "www" => "www.doosanskodapower.com/cz/"
                     ],
+                    "Canpack" => [
+                        "nazev" => "Canpack Czech s.r.o.", "www" => "cz.canpack.com/#grow"
+                    ],
+                    "Invelt" => [
+                        "nazev" => "Invelt-elektro s.r.o.", "www" => "www.invelt-kariera.cz"
+                    ],
+                    "MDElektronik" => [
+                        "nazev" => "MD ELEKTRONIK", "www" => "www.md-elektronik.com/cs/kariera/"
+                    ],
                 ]
             ]
         ],
@@ -92,17 +101,23 @@ class NabidkaPrace {
                     "Vetropack" => [
                         "nazev" => "Vetropack Moravia Glass a.s.", "www" => "www.vetropack.cz/cz/vetropack/kariera/volna-pracovni-mista/"
                     ],
-                    "ROHDE" => [
-                        "nazev" => "ROHDE, spol. s.r.o.", "www" => "rohde.sluzby.cz/"  
+                    "Cukrovary" => [
+                        "nazev" => "Moravskoslezské cukrovary s.r.o.", "www" => "www.korunnicukr.cz/kontakt/"  
                     ],
-                    "GlobalTele" => [
-                        "nazev" => "Global Tele Sales Brno s.r.o.", "www" => "www.firmy.cz/detail/2212898-global-tele-sales-brno-brno-styrice.html"
+                    "Westfalia" => [
+                        "nazev" => "Westfalia Metal s.r.o.", "www" => "www.westfalia-mh.com/cs/kariera/"  
                     ],
-                    "Policie" => [
-                        "nazev" => "Policejní prezidium ČR", "www" => "nabor.policie.cz/"
+                    "Zebr" => [
+                        "nazev" => "Zebr, s.r.o.", "www" => "www.zebr.cz/cz/kariera/"  
                     ],
-                    "DITON" => [
-                        "nazev" => "DITON s.r.o.", "www" => "www.diton.cz/"  
+                    "Vodarenska" => [
+                        "nazev" => "Vodárenská akciová společnost, a.s.", "www" => "vodarenska.cz/pracovni-prilezitosti/"  
+                    ],
+                    "Bomar" => [
+                        "nazev" => "Bomar, spol, s.r.o.", "www" => "bomar.jobs.cz"  
+                    ],
+                    "Minerva" => [
+                        "nazev" => "Minerva Boskovice, a.s.", "www" => "www.minerva-boskovice.cz/aktuality/nabidka-volnych-pracovnich-mist"  
                     ]
                 ]
             ]
@@ -114,6 +129,9 @@ class NabidkaPrace {
                     "Wacker" => [
                         "nazev" => "Wacker-chemie, s.r.o.", "www" => "www.wacker.com/cms/en-cz/careers/working-at-wacker/pilsen-careers.html"
                     ],
+                    "NSCZ" => [
+                        "nazev" => "NSCZ s.r.o.", "www" => "www.firmy.cz/detail/2344588-nscz-habartov.html"
+                    ]
                 ]
             ]
         ],
